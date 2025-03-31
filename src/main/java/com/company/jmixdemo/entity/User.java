@@ -58,6 +58,7 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     @Column(name = "JOINING_DATE")
     private LocalDate joiningDate;
+    @OrderBy("step.name")
     @Composition
     @OneToMany(mappedBy = "user")
     private List<UserStep> steps;

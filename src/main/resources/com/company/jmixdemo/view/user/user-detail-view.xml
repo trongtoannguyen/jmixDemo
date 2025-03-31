@@ -55,18 +55,11 @@
             <datePicker id="joiningDateField" property="joiningDate"/>
         </formLayout>
         <hbox id="buttonsPanel" classNames="buttons-panel">
-            <button action="stepsDataGrid.createAction"/>
-            <button action="stepsDataGrid.editAction"/>
-            <button action="stepsDataGrid.removeAction"/>
+            <button id="generateButton" text="Generate"/>
         </hbox>
         <dataGrid id="stepsDataGrid" dataContainer="stepsDc" width="100%" height="100%">
-            <actions>
-                <action id="createAction" type="list_createAction"/>
-                <action id="editAction" type="list_edit"/>
-                <action id="removeAction" type="list_removeAction"/>
-            </actions>
             <columns>
-                <column property="id"/>
+                <column property="step.name"/>
                 <column property="dueDate"/>
                 <column property="version"/>
             </columns>
