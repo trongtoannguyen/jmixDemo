@@ -9,7 +9,9 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "DEPARTMENT", uniqueConstraints = {
+@Table(name = "DEPARTMENT", indexes = {
+        @Index(name = "IDX_DEPARTMENT_HR_MANAGER", columnList = "HR_MANAGER_ID")
+}, uniqueConstraints = {
         @UniqueConstraint(name = "IDX_DEPARTMENT_UNQ_NAME", columnNames = {"NAME"})
 })
 @Entity
@@ -18,13 +20,24 @@ public class Department {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+    @Column(name = "VERSION", nullable = false)
+    @Version
+    private Integer version;
     @InstanceName
     @Column(name = "NAME", nullable = false)
     @NotNull
     private String name;
-    @Column(name = "VERSION", nullable = false)
-    @Version
-    private Integer version;
+    @JoinColumn(name = "HR_MANAGER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User hrManager;
+
+    public User getHrManager() {
+        return hrManager;
+    }
+
+    public void setHrManager(User hrManager) {
+        this.hrManager = hrManager;
+    }
 
     public String getName() {
         return name;

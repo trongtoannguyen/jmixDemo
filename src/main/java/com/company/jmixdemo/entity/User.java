@@ -4,59 +4,89 @@ import io.jmix.core.HasTimeZone;
 import io.jmix.core.annotation.Secret;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.SystemLevel;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import io.jmix.security.authentication.JmixUserDetails;
-import org.springframework.security.core.GrantedAuthority;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
 @Entity
 @Table(name = "USER_", indexes = {
-        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true)
+        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true),
+        @Index(name = "IDX_USER__DEPARTMENT", columnList = "DEPARTMENT_ID")
 })
 public class User implements JmixUserDetails, HasTimeZone {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     @JmixGeneratedValue
     private UUID id;
 
     @Version
     @Column(name = "VERSION", nullable = false)
     private Integer version;
-
     @Column(name = "USERNAME", nullable = false)
     private String username;
-
     @Secret
     @SystemLevel
     @Column(name = "PASSWORD")
     private String password;
-
     @Column(name = "FIRST_NAME")
     private String firstName;
-
     @Column(name = "LAST_NAME")
     private String lastName;
-
     @Email
     @Column(name = "EMAIL")
     private String email;
-
     @Column(name = "ACTIVE")
     private Boolean active = true;
-
     @Column(name = "TIME_ZONE_ID")
     private String timeZoneId;
+    @JoinColumn(name = "DEPARTMENT_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Department department;
 
+    @Column(name = "JOINING_DATE")
+    private LocalDate joiningDate;
+    @Composition
+    @OneToMany(mappedBy = "user")
+    private List<UserStep> steps;
     @Transient
     private Collection<? extends GrantedAuthority> authorities;
+
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(LocalDate joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+    public List<UserStep> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<UserStep> steps) {
+        this.steps = steps;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public UUID getId() {
         return id;
