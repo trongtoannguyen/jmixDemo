@@ -2,6 +2,19 @@
 <project version="4">
   <component name="JmixDataStoreSettingsManager">
     <moduleSettings>
+      <entry key="com.company.jmixDemo.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2 />
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
       <entry key="jmixDemo.main">
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
@@ -21,5 +34,12 @@
         </ModuleSettings>
       </entry>
     </moduleSettings>
+  </component>
+  <component name="VersionUpdateSettings">
+    <option name="ignoredVersions">
+      <set>
+        <option value="2.5.1" />
+      </set>
+    </option>
   </component>
 </project>

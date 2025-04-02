@@ -62,6 +62,8 @@
                 <column property="step.name"/>
                 <column property="dueDate"/>
                 <column property="version"/>
+                <column property="completedDate"/>
+                <column key="completed" sortable="false" width="4em" flexGrow="0"/>
             </columns>
         </dataGrid>
         <hbox id="detailActions">

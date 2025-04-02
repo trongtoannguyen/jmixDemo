@@ -33,6 +33,16 @@ public class UserStep {
     @Column(name = "DUE_DATE", nullable = false)
     @NotNull
     private LocalDate dueDate;
+    @Column(name = "COMPLETED_DATE")
+    private LocalDate completedDate;
+
+    public LocalDate getCompletedDate() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(LocalDate completedDate) {
+        this.completedDate = completedDate;
+    }
 
     public LocalDate getDueDate() {
         return dueDate;
@@ -73,4 +83,5 @@ public class UserStep {
     public void setId(UUID id) {
         this.id = id;
     }
+
 }
