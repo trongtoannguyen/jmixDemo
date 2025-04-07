@@ -63,8 +63,8 @@
                 <column property="dueDate"/>
                 <column property="version"/>
                 <column property="completedDate"/>
-                <column key="completed" sortable="false" width="4em" flexGrow="0"/>
-            </columns>
+                <column key="completed" sortable="false" flexGrow="0" header="completed"/>
+           </columns>
         </dataGrid>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
