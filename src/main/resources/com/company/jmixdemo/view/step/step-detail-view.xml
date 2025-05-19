@@ -25,9 +25,6 @@
             <textField id="nameField" property="name"/>
             <textField id="durationField" property="duration"/>
             <textField id="sortValueField" property="sortValue" colspan="2"/>
-            <textField id="nameField2" property="name"/>
-            <textField id="durationField2" property="duration"/>
-            <textField id="sortValueField2" property="sortValue" colspan="2"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
