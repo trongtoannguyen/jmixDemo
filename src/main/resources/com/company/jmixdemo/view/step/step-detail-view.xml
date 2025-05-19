@@ -16,7 +16,7 @@
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
     </actions>
-    <layout width="100%"><layout width="100%">
+    <layout width="100%">
         <formLayout id="form" dataContainer="stepDc">
             <responsiveSteps>
                 <responsiveStep minWidth="0" columns="1"/>
@@ -28,9 +28,7 @@
             <textField id="nameField2" property="name"/>
             <textField id="durationField2" property="duration"/>
             <textField id="sortValueField2" property="sortValue" colspan="2"/>
-            <textField id="descriptionField" property="description" colspan="4"/>
         </formLayout>
-    </layout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
             <button id="closeButton" action="closeAction"/>
